@@ -534,4 +534,71 @@ body.menu-active .logo {
   .logo img {
     width: 45px; /* Slightly smaller on phones */
   }
+  .certs1 {
+    display:block;
+    overflow-x:scroll;
+
+  }
+  .certs1 > img{
+    display:block;
+    width:100%;
+
+  }
+  #endbracket {
+    margin-bottom:8em;
+  }
 }
+
+/* Add Background For Sections of Text */
+.info-text {
+ background-color: 	#2d447c5b;
+}
+.photo-container h3{
+  display: flex;         
+  align-items: center; 
+  gap: 24px;
+  padding: 20px;
+}
+
+.photo-container h3 img {
+  max-width: 300px;      
+  height: auto;
+  object-fit: cover;
+}
+
+/* Certifcations CSS */
+.certs1 {
+  display: flex;
+  gap: 10px;
+}
+.certs1 img {
+  max-width: 650px;
+  height: auto;
+}
+
+/* View Button*/
+.cert-btn {
+  display: block;
+  margin: auto;
+  background-color: var(--bg-menu-item);
+  color: var(--text-accent);
+  width: 400px;
+  text-decoration: none;
+  padding: 1.1em;
+  border-radius: 100px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 15px var(--hydro-glow); 
+  transition: all 0.4s ease;
+  border: 1px solid var(--border-menu);
+  text-align: center;
+}
+
+.cert-btn:hover {
+  /* Flips the colors into the highlight state on hover */
+  background-color: var(--text-primary);
+  color: var(--bg-menu-hub);
+  border-color: var(--hydro-glow);
+  
+  /* Creates an intense Hydro vision style flash on hover */
+  box-shadow: 0 0 35px var(--hydro-glow); 
+}
+
