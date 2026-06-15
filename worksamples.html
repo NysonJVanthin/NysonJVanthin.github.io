@@ -21,13 +21,37 @@
         </header>
         <main>
             <section class="mainstart-text">
-                Gotta Upload Some Work Samples
+                Work samples
             </section>
             <section>
                 <h1> 
-                    Madam Herta is a peerless gem. Madam Herta is an unrivaled genius. Madam Herta is an inimitable beauty.
+                    Here are some projects i've worked on and created using Javascript!
                 </h1>
                 <br>
+                <div class="portfolio-carousel">
+    
+                    <button class="carousel-arrow left-arrow" onclick="changeProject(-1)" aria-label="Previous Project">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                
+                    <div class="carousel-display">
+                        
+                        <div class="iframe-container">
+                            <iframe id="project-frame" src="" allowfullscreen></iframe>
+                        </div>
+                        
+                        <div class="project-details">
+                            <h2 id="project-title">Loading Project Title...</h2>
+                            <p id="project-desc">Loading project description details...</p>
+                        </div>
+                
+                    </div>
+                
+                    <button class="carousel-arrow right-arrow" onclick="changeProject(1)" aria-label="Next Project">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                
+                </div>
             </section>
             <section id=endbracket>
             <br>

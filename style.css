@@ -68,7 +68,19 @@ section {
   font-size: 2rem;
   color: var(--text-primary);
   max-width: 800px;
-  margin: 40px auto;
+  margin: 30px auto;
+  line-height: 1.5;
+}
+h4 {
+  color: var(--text-accent);
+  margin: 0px;
+  transition: color 0.4s ease;
+}
+h3 {
+  font-size: 2rem;
+  color: var(--text-accent);
+  max-width: 800px;
+  margin: 30px auto;
   line-height: 1.5;
 }
 
@@ -448,16 +460,18 @@ html, body {
 /* --- 2. FORCE MAIN WRAPPER TO BE THE SCROLL CONTAINER --- */
 #main-wrapper {
   width: 100%;
-  height: 100vh; /* Lock it to viewport height */
-  
-  /* Tells the wrapper to create its own internal scrolling system. 
-     This bypasses Chrome's global overlay lock! */
-  overflow-y: auto; 
+  height: 100vh;
+  overflow-y: auto;
   overflow-x: hidden;
   
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px; 
+  
+  /* CRITICAL CHANGE: Tells the wrapper to mathematically center 
+     all elements (like your carousel) along the horizontal axis */
+  align-items: center; 
+  
+  padding-bottom: 100px;
   background: var(--bg-gradient);
   transition: filter 0.5s ease;
 }
@@ -544,6 +558,10 @@ body.menu-active .logo {
     width:100%;
 
   }
+  .certs1 > h2{
+    display:block;
+    width:100%;
+  }
   #endbracket {
     margin-bottom:8em;
   }
@@ -576,6 +594,7 @@ body.menu-active .logo {
   height: auto;
 }
 
+
 /* View Button*/
 .cert-btn {
   display: block;
@@ -602,3 +621,140 @@ body.menu-active .logo {
   box-shadow: 0 0 35px var(--hydro-glow); 
 }
 
+/* I frames */
+/* --- APP PREVIEW CAROUSEL ARCHITECTURE --- */
+.portfolio-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  
+  width: 100%;
+  /* Controls how wide the app screen looks on your desktop monitor */
+  max-width: 700px; 
+  
+  /* CRITICAL CHANGE: 'auto' on the sides balances the spacing perfectly, 
+     locking the whole display system directly in the middle of the page */
+  margin: 40px auto; 
+  padding: 0 20px;
+}
+
+.carousel-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-menu-hub);
+  border: 1px solid var(--border-menu);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  overflow: hidden;
+}
+
+/* --- APP PREVIEW HEIGHT OPTIMIZATION --- */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  
+  /* 1. Remove the old padding-top property that squished the screen */
+  padding-top: 0 !important; 
+  
+  /* 2. Set a generous, crisp height so you can easily see and interact with the app */
+  height: 600px; 
+  
+  /* Deep midnight background behind the app canvas */
+  background: #040811; 
+  border-bottom: 1px solid var(--border-menu);
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  
+  /* Centers the embedded App Lab canvas perfectly inside the preview window */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Responsive adjustment for laptop and mobile viewports */
+@media screen and (max-width: 768px) {
+  .iframe-container {
+    /* Slightly lower height on compact screens so it doesn't run off the display */
+    height: 500px; 
+  }
+}
+
+/* Interactive Text Information Blocks */
+.project-details {
+  padding: 25px;
+  border-top: 1px solid var(--border-menu);
+  background: rgba(0, 0, 0, 0.15);
+  
+  /* Forces your project text descriptions and h2 headers to align 
+     centrically to match Furina's clean alignment template */
+  text-align: center; 
+}
+
+.project-details h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-accent);
+  font-size: 1.4rem;
+  margin: 0 auto 10px auto;
+}
+
+.project-details p {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 550px; /* Limits description line-length for easier reading */
+}
+
+/* Directional Arrow Controls Styling */
+.carousel-arrow {
+  background: var(--bg-menu-hub);
+  border: 1px solid var(--border-menu);
+  color: var(--text-accent);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: all 0.3s ease;
+  pointer-events: auto !important; /* Retain click inputs inside parent headers */
+}
+
+.carousel-arrow:hover {
+  background: var(--text-primary);
+  color: var(--bg-menu-hub);
+  border-color: var(--hydro-glow);
+  box-shadow: 0 0 20px var(--hydro-glow);
+}
+
+/* Mobile Screen Viewport Adjustments */
+@media screen and (max-width: 600px) {
+  .portfolio-carousel {
+    flex-wrap: wrap; /* Wraps arrow elements below main container box */
+    gap: 15px;
+  }
+  
+  .carousel-display {
+    order: -1; /* Forces display viewport box to remain on top */
+    width: 100%;
+  }
+
+  .carousel-arrow {
+    width: 48px;
+    height: 48px;
+    flex: 1; /* Stretch arrow click targets to span mobile widths cleanly */
+    border-radius: 8px;
+  }
+}
