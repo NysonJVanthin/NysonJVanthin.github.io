@@ -757,4 +757,8 @@ body.menu-active .logo {
     flex: 1; /* Stretch arrow click targets to span mobile widths cleanly */
     border-radius: 8px;
   }
+  .info-text {
+    width: 100%;
+    padding: 15px;
+  }
 }
